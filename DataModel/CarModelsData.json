@@ -1,0 +1,18 @@
+{"Cars":[
+  {
+    "UniqueId": "1",
+    "Title": "Fusca",
+    "ImagePath": "Assets/DarkGray.png"
+  },
+{
+    "UniqueId": "2",
+    "Title": "Passat",
+    "ImagePath": "Assets/DarkGray.png"
+  },
+{
+    "UniqueId": "3",
+    "Title": "Brasilia",
+    "ImagePath": "Assets/DarkGray.png"
+  }
+]
+}
