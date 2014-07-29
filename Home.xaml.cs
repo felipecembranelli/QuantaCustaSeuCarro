@@ -36,14 +36,16 @@ namespace YourCarCost
         }
 
 
-        private async void ClearFilterLists()
+        private void ClearFilterLists()
         {
 
             //await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, this.cboCarBranch.Items.Clear);
             //await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, this.cboCarModel.Items.Clear);
             //await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, this.cboVersion.Items.Clear);
-            
 
+            this.cboCarBranch.ItemsSource = null;
+            this.cboCarModel.ItemsSource = null;
+            this.cboVersion.ItemsSource = null;
         }
         private async void LoadData()
         {
@@ -69,9 +71,6 @@ namespace YourCarCost
         {
             FipeDataSource c = new FipeDataSource();
 
-            //await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, this.cboCarModel.Items.Clear);
-            //await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, this.cboVersion.Items.Clear);
-
             if (this.cboCarBranch.SelectedValue != null)
             {
                 string selectedBranch = (this.cboCarBranch.SelectedValue as CarBranch).Id.ToString();
@@ -80,7 +79,6 @@ namespace YourCarCost
 
                 this.cboCarModel.ItemsSource = carModels;
 
-                
             }
         }
 
@@ -89,8 +87,6 @@ namespace YourCarCost
             FipeDataSource c = new FipeDataSource();
             string selectedBranch = string.Empty;
             string selectedModel = string.Empty;
-
-            //await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, this.cboVersion.Items.Clear);
 
             if ((this.cboCarBranch.SelectedValue != null) && (this.cboCarModel.SelectedValue != null))
             {
@@ -104,6 +100,49 @@ namespace YourCarCost
             }
         }
 
+        private async void GetCarDetails()
+        {
+            FipeDataSource c = new FipeDataSource();
+            string selectedBranch = string.Empty;
+            string selectedModel = string.Empty;
+            string selectedVersion = string.Empty;
+
+            if ((this.cboCarBranch.SelectedValue != null) 
+                && (this.cboCarModel.SelectedValue != null)
+                && (this.cboVersion.SelectedValue!=null))
+            {
+                selectedBranch = (this.cboCarBranch.SelectedValue as CarBranch).Id.ToString();
+
+                selectedModel = (this.cboCarModel.SelectedValue as CarModel).Id.ToString();
+
+                selectedVersion = (this.cboVersion.SelectedValue as CarModelYear).Id.ToString();
+
+
+                var carDetails = await c.GetCarDetails(selectedBranch, selectedModel, selectedVersion);
+
+                    if (carDetails!=null)
+                    {
+                        this.txtPrice.Text = carDetails.Preco;
+                        this.Calculate(carDetails.Preco);
+                    }
+            }
+
+        }
+
+        private void Calculate(string fullPrice)
+        {
+            var cultureInfo = new System.Globalization.CultureInfo("pt-BR");
+            double price = double.Parse(fullPrice, System.Globalization.NumberStyles.Currency, cultureInfo);
+
+
+            this.txtIpva.Text = (price * (4D / 100)).ToString();
+            this.txtSeguro.Text = (price * (8D / 100)).ToString();
+            this.txtCustoOportunidade.Text = (price * (6D / 100)).ToString();
+            this.txtDepreciacao.Text = (price * (5D / 100)).ToString();
+            this.txtManutencao.Text = (price * (4D / 100)).ToString();
+
+
+        }
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -118,6 +157,7 @@ namespace YourCarCost
 
         private void cboCarBranch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            this.cboCarModel.ItemsSource = null;
             this.cboCarModel.Items.Clear();
             this.LoadModel();
             
@@ -127,8 +167,14 @@ namespace YourCarCost
 
         private void cboCarModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            this.cboVersion.ItemsSource = null;
             this.cboVersion.Items.Clear();
             this.LoadVersion();
+        }
+
+        private void cboVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.GetCarDetails();
         }
 
     }

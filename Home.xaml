@@ -9,22 +9,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <ComboBox Header="Marca" x:Name="cboCarBranch"  PlaceholderText="Selecione a marca" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarBranch_SelectionChanged"/>
+        <ComboBox Header="Marca" x:Name="cboCarBranch"  PlaceholderText="Selecione a marca" Width="300" ItemsSource="{Binding storeData.Collection, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarBranch_SelectionChanged"/>
 
         <ComboBox Header="Modelo" x:Name="cboCarModel"  PlaceholderText="Selecione o modelo" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name"  SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarModel_SelectionChanged"/>
 
-        <ComboBox Header="Versão" x:Name="cboVersion"  PlaceholderText="Selecione a versão" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" />
+        <ComboBox Header="Versão" x:Name="cboVersion"  PlaceholderText="Selecione a versão" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboVersion_SelectionChanged" />
 
-        <TextBox Name="email" Header="Email address"/>
-        <PasswordBox  Name="password" Header="Password"/>
-        <CheckBox Name="showPassword" Content="Show password"/>
+        <TextBox Name="txtPrice" Header="Preço"/>
+        <TextBox Name="txtIpva" Header="IPVA"/>
+        <TextBox Name="txtSeguro" Header="Seguro"/>
+        <TextBox Name="txtManutencao" Header="Manutenção"/>
+        <TextBox Name="txtDepreciacao" Header="Depreciação"/>
+        <TextBox Name="txtCustoOportunidade" Header="Custo de Oportunidade"/>
+        <TextBox Name="txtTotalAnual" Header="Total Anual"/>
+        <TextBox Name="txtTotalMensal" Header="Total Mensal"/>
 
-        <!-- Content body -->
-        <TextBlock Name="body" Style="{StaticResource MessageDialogContentStyle}" TextWrapping="Wrap">
-            <TextBlock.Text>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </TextBlock.Text>
-        </TextBlock>
     </StackPanel>
 </Page>

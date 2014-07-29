@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -194,6 +195,51 @@ namespace YourCarCost
             return carModelYears;
         }
 
+        public async Task<Car> GetCarDetails(string branchId, string carId, string versionId)
+        {
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+            Uri resourceUri;
+            string jsonText;
+            Car car = null;
+
+
+            string uri = string.Format("http://fipeapi.appspot.com/api/1/carros/veiculo/{0}/{1}/{2}.json", branchId, carId, versionId);
+
+            resourceUri = new Uri(uri);
+
+            Windows.Storage.Streams.IInputStream response = await httpClient.GetInputStreamAsync(resourceUri);
+
+
+            using (StreamReader reader = new StreamReader(response.AsStreamForRead()))
+            {
+                jsonText = await reader.ReadToEndAsync();
+            }
+
+
+            JsonValue jsonObject = JsonValue.Parse(jsonText);
+
+            //JsonArray jsonArray = jsonObject.GetArray();
+
+            //foreach (JsonValue item in jsonArray)
+            //{
+                JsonObject jObj = jsonObject.GetObject();
+                car = new Car(jObj["key"].GetString(),
+                                                jObj["id"].GetString(),
+                                                jObj["fipe_marca"].GetString(),
+                                                jObj["referencia"].GetString(),
+                                                jObj["fipe_codigo"].GetString(),
+                                                jObj["preco"].GetString(),
+                                                jObj["name"].GetString(),
+                                                jObj["veiculo"].GetString(),
+                                                jObj["marca"].GetString()
+                                                );
+
+            //}
+
+            return car;
+        }
+
+
 
     }
 
@@ -229,6 +275,9 @@ namespace YourCarCost
         {
             return this.Name;
         }
+
+
+
     }
 
 
@@ -285,4 +334,34 @@ namespace YourCarCost
         public string Name { get; private set; }
 
     }
+
+    public class Car
+    {
+
+        public Car(string key, string id, string fipe_marca, 
+                            string referencia, string fipe_codigo, string preco, string name, string veiculo, string marca)
+        {
+            this.Key = key;
+            this.Id = id;
+            this.Fipe_marca = fipe_marca;
+            this.Referencia = referencia;
+            this.Fipe_codigo = fipe_codigo;
+            this.Preco = preco;
+            this.Veiculo = veiculo;
+            this.Marca = marca;
+            this.Name = name;
+        }
+        public string Key { get; private set; }
+        public string Id { get; private set; }
+        public string Fipe_marca { get; private set; }
+        public string Referencia { get; private set; }
+        public string Fipe_codigo { get; private set; }
+        public string Preco { get; private set; }
+        public string Name { get; private set; }
+        public string Veiculo { get; private set; }
+        public string Marca { get; private set; }
+
+    }
+
+
 }
