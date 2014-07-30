@@ -8,6 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    
+    
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <ComboBox Header="Marca" x:Name="cboCarBranch"  PlaceholderText="Selecione a marca" Width="300" ItemsSource="{Binding storeData.Collection, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarBranch_SelectionChanged"/>
 
@@ -15,9 +17,10 @@
 
         <ComboBox Header="Versão" x:Name="cboVersion"  PlaceholderText="Selecione a versão" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboVersion_SelectionChanged" />
 
+        
         <TextBox Name="txtPrice" Header="Preço"/>
         <TextBox Name="txtIpva" Header="IPVA"/>
-        <TextBox Name="txtSeguro" Header="Seguro"/>
+        <TextBox Name="txtSeguro" Header="Seguro"/> 
         <TextBox Name="txtManutencao" Header="Manutenção"/>
         <TextBox Name="txtDepreciacao" Header="Depreciação"/>
         <TextBox Name="txtCustoOportunidade" Header="Custo de Oportunidade"/>
@@ -25,4 +28,6 @@
         <TextBox Name="txtTotalMensal" Header="Total Mensal"/>
 
     </StackPanel>
+
+    
 </Page>
