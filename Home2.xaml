@@ -14,11 +14,13 @@
         <Style x:Key="TitleBoldTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextStyle}">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="25"/>
-            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
 
+        
         <Style x:Key="InfoTextStyle" TargetType="TextBlock" BasedOn="{StaticResource ItemTextStyle}">
-            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
 
         <Style x:Key="InfoBoldTextStyle" TargetType="TextBlock" BasedOn="{StaticResource InfoTextStyle}">
@@ -284,44 +286,172 @@
                     <ImageBrush ImageSource="ms-appx:///Assets/bg-long.png" Stretch="UniformToFill"/>
                 </StackPanel.Background>
 
+                <Border BorderBrush="#4C333333" x:Name="topHeader" Visibility="Visible">
+                    <Grid HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                        <TextBlock x:Name="txtTopHeader" Style="{StaticResource TitleBoldTextStyle}" Margin="12, 20, 20, 20" TextWrapping="Wrap">Quanto Custa o seu carro?</TextBlock>
+                    </Grid> 
 
-                <TextBlock Margin="20,10,0,16" Text="Quanto Custa o seu carro?" Style="{StaticResource TitleBoldTextStyle}"/>
+                </Border>
 
-                <TextBlock TextWrapping="Wrap" Text="Marca" Foreground="#FF959393" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0" FontWeight="Bold"/>
-                <ComboBox Margin="20,0,0,0" BorderBrush="#4C333333" Foreground="Red" x:Name="cboCarBranch"  PlaceholderText="Selecione a marca" Width="300" ItemsSource="{Binding storeData.Collection, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarBranch_SelectionChanged"/>
+                <TextBlock Margin="20,10,0,16" Text="Calcule quanto o seu carro custa para você no mês e também no ano:" Style="{StaticResource InfoBoldTextStyle}"/>
 
-                <TextBlock TextWrapping="Wrap" Text="Modelo" Foreground="#FF959393" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0" FontWeight="Bold"/>
-                <ComboBox Margin="20,0,0,0" BorderBrush="#4C333333"  x:Name="cboCarModel"  PlaceholderText="Selecione o modelo" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name"  SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarModel_SelectionChanged"/>
+                <TextBlock TextWrapping="Wrap" Text="Marca" Foreground="#FF959393" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,-10" FontWeight="Bold"/>
+                <ComboBox Margin="20,0,0,0" BorderBrush="#4C333333" x:Name="cboCarBranch"  PlaceholderText="Selecione a marca" FontSize="15" Width="300" Height="50" ItemsSource="{Binding storeData.Collection, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarBranch_SelectionChanged" RequestedTheme="Light"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Modelo" Foreground="#FF959393" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,-10" FontWeight="Bold"/>
+                <ComboBox Margin="20,0,0,0" BorderBrush="#4C333333"  x:Name="cboCarModel"  PlaceholderText="Selecione o modelo" FontSize="15" Width="300"  Height="50" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name"  SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboCarModel_SelectionChanged" RequestedTheme="Light"/>
 
                 <TextBlock TextWrapping="Wrap" Text="Versão" Foreground="#FF959393" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0" FontWeight="Bold"/>
-                <ComboBox Margin="20,0,0,0"  BorderBrush="#4C333333" x:Name="cboVersion"  PlaceholderText="Selecione a versão" Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboVersion_SelectionChanged" />
+                <ComboBox Margin="20,0,0,0"  BorderBrush="#4C333333" x:Name="cboVersion"  PlaceholderText="Selecione a versão" FontSize="15"   Width="300" ItemsSource="{Binding storeData.Collection}" DisplayMemberPath="Name" SelectedValue="" HorizontalAlignment="Left" SelectionChanged="cboVersion_SelectionChanged" RequestedTheme="Light" />
 
                 <Grid x:Name="notesGrid"  Margin="20,5,0,0">
                     <StackPanel HorizontalAlignment="Stretch" Margin="0,4,14,20">
 
                         <StackPanel>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                            
+                            <StackPanel Orientation="Horizontal">
+                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,20">
                                 <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock TextWrapping="Wrap" Text="Preço" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                    <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF636363">
+                                        <TextBlock TextWrapping="Wrap" Text="Tabela Fipe" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtPrice" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="IPVA" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtIpva" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="Seguro" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtSeguro" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="Manutenção" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtManutencao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="Tabela Fipe" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtDepreciacao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="Custo Oportunidade" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtCustoOportunidade" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="Total Anual" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtTotalAnual" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
+                                    <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
+                                        <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
+                                            <TextBlock TextWrapping="Wrap" Text="Total Mensal" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        </Grid>
+                                        <TextBlock Name="txtTotalMensal" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,20">
+                                    <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
+                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+
+                            <!--<Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
                                 <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
                                     <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
                                         <TextBlock TextWrapping="Wrap" Text="IPVA" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtIpva" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
                                 <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
                                     <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock TextWrapping="Wrap" Text="Seguro" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        <TextBlock  TextWrapping="Wrap" Text="Seguro" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock  Name="txtSeguro" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
@@ -329,7 +459,7 @@
                                     <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
                                         <TextBlock TextWrapping="Wrap" Text="Manutenção" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtManutencao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
@@ -337,34 +467,34 @@
                                     <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
                                         <TextBlock TextWrapping="Wrap" Text="Depreciação" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtDepreciacao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
                                 <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
                                     <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock TextWrapping="Wrap" Text="Custo Oportunidade" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        <TextBlock  TextWrapping="Wrap" Text="Custo Oportunidade" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtCustoOportunidade" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
                                 <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
                                     <Grid Width="140" HorizontalAlignment="Left" Background="Orange">
-                                        <TextBlock TextWrapping="Wrap" Text="Total Anual" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        <TextBlock  TextWrapping="Wrap" Text="Total Anual" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtTotalAnual" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
                             </Border>
 
                             <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
                                 <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
                                     <Grid Width="140" HorizontalAlignment="Left" Background="Red">
-                                        <TextBlock TextWrapping="Wrap" Text="Total Mensal" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                        <TextBlock  TextWrapping="Wrap" Text="Total Mensal" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                     </Grid>
-                                    <TextBlock TextWrapping="Wrap" Text="Add a note" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
+                                    <TextBlock Name="txtTotalMensal" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                 </StackPanel>
-                            </Border>
+                            </Border>-->
 
 
                         </StackPanel>
@@ -372,9 +502,9 @@
                 </Grid>
             </StackPanel>
         </ScrollViewer>
-        <Border BorderBrush="#4C333333" x:Name="StatusBorder" Grid.Row="1" Visibility="Visible">
-            <Grid HorizontalAlignment="Stretch" Background="#FF0C4DA2">
-                <TextBlock x:Name="StatusBlock" Foreground="White" FontWeight="Bold" Margin="12, 10, 12, 10" TextWrapping="Wrap"/>
+        <Border BorderBrush="#4C333333" x:Name="StatusBorder" Grid.Row="1" Visibility="Visible" Tapped="StatusBorder_Tapped">
+            <Grid HorizontalAlignment="Stretch" Background="#FFC6C6C6">
+                <TextBlock x:Name="StatusBlock" Foreground="Black"  FontSize="15" FontWeight="Bold" Margin="12, 10, 12, 10" TextWrapping="Wrap"/>
             </Grid>
             
         </Border>

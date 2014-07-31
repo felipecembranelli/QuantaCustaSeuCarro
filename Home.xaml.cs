@@ -23,10 +23,10 @@ namespace YourCarCost
     /// </summary>
     public sealed partial class Home : Page
     {
-        List<string> years = new List<string>
-        {
-            "2014","2013","2012"
-        };
+        //List<string> years = new List<string>
+        //{
+        //    "2014","2013","2012"
+        //};
 
         public Home()
         {
@@ -35,6 +35,18 @@ namespace YourCarCost
             this.LoadData();
         }
 
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            
+
+        }
+
+        #region Custom Code
 
         private void ClearFilterLists()
         {
@@ -107,9 +119,9 @@ namespace YourCarCost
             string selectedModel = string.Empty;
             string selectedVersion = string.Empty;
 
-            if ((this.cboCarBranch.SelectedValue != null) 
+            if ((this.cboCarBranch.SelectedValue != null)
                 && (this.cboCarModel.SelectedValue != null)
-                && (this.cboVersion.SelectedValue!=null))
+                && (this.cboVersion.SelectedValue != null))
             {
                 selectedBranch = (this.cboCarBranch.SelectedValue as CarBranch).Id.ToString();
 
@@ -120,11 +132,11 @@ namespace YourCarCost
 
                 var carDetails = await c.GetCarDetails(selectedBranch, selectedModel, selectedVersion);
 
-                    if (carDetails!=null)
-                    {
-                        this.txtPrice.Text = carDetails.Preco;
-                        this.Calculate(carDetails.Preco);
-                    }
+                if (carDetails != null)
+                {
+                    this.txtPrice.Text = carDetails.Preco;
+                    this.Calculate(carDetails.Preco);
+                }
             }
 
         }
@@ -143,18 +155,6 @@ namespace YourCarCost
 
 
         }
-
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            
-
-        }
-
         private void cboCarBranch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.cboCarModel.ItemsSource = null;
@@ -177,5 +177,6 @@ namespace YourCarCost
             this.GetCarDetails();
         }
 
+        #endregion
     }
 }
