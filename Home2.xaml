@@ -274,6 +274,14 @@
         </Style>
 
     </Page.Resources>
+
+    <Page.BottomAppBar>
+        <CommandBar Visibility="Collapsed">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="Share" Label="Compartilhar" Icon="ReShare"  Click="Share_Click"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -289,9 +297,14 @@
                 <Border BorderBrush="#4C333333" x:Name="topHeader" Visibility="Visible">
                     <Grid HorizontalAlignment="Stretch" Background="#FF0C4DA2">
                         <TextBlock x:Name="txtTopHeader" Style="{StaticResource TitleBoldTextStyle}" Margin="12, 20, 20, 20" TextWrapping="Wrap">Quanto Custa o seu carro?</TextBlock>
-                    </Grid> 
-
+                    </Grid>
                 </Border>
+                <Border BorderBrush="red" x:Name="bottonHeader" Visibility="Visible">
+                    <Grid HorizontalAlignment="Stretch" Background="Red" Height="10">
+                    </Grid>
+                    
+                </Border>
+
 
                 <TextBlock Margin="20,10,0,16" Text="Calcule quanto o seu carro custa para você no mês e também no ano:" Style="{StaticResource InfoBoldTextStyle}"/>
 
@@ -320,7 +333,7 @@
                             </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpFipe" Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpFipe_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -336,7 +349,7 @@
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpIpva"  Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpIpva_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -352,7 +365,7 @@
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpSeguro" Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpSeguro_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -368,7 +381,7 @@
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpManutencao" Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpManutencao_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -377,14 +390,14 @@
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
                                     <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
                                         <Grid Width="140" HorizontalAlignment="Stretch" Background="#FF0C4DA2">
-                                            <TextBlock TextWrapping="Wrap" Text="Tabela Fipe" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                            <TextBlock TextWrapping="Wrap" Text="Depreciação" VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                                         </Grid>
                                         <TextBlock Name="txtDepreciacao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
                                     </StackPanel>
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpDepreciacao"  Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpDepreciacao_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -400,7 +413,7 @@
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpCustoOportunidade" Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpCustoOportunidade_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -416,7 +429,7 @@
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,0">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpTotalAnual"  Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpTotalAnual_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
@@ -432,69 +445,12 @@
                                 </Border>
                                 <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Margin="10,5,0,20">
                                     <Grid Width="40" Height="45" HorizontalAlignment="Stretch" >
-                                        <Image Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="Image_Tapped" />
+                                        <Image Name="imgHelpTotalMensal" Visibility="Visible" Source="Assets/question_mark3.jpg"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Tapped="imgHelpTotalMensal_Tapped" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
 
 
-                            <!--<Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock TextWrapping="Wrap" Text="IPVA" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock Name="txtIpva" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock  TextWrapping="Wrap" Text="Seguro" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock  Name="txtSeguro" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock TextWrapping="Wrap" Text="Manutenção" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock Name="txtManutencao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock TextWrapping="Wrap" Text="Depreciação" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock Name="txtDepreciacao" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="#FF0C4DA2">
-                                        <TextBlock  TextWrapping="Wrap" Text="Custo Oportunidade" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock Name="txtCustoOportunidade" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="Orange">
-                                        <TextBlock  TextWrapping="Wrap" Text="Total Anual" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock Name="txtTotalAnual" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>
-
-                            <Border BorderBrush="#4C333333" BorderThickness="2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Background="White" Margin="0,5,0,0">
-                                <StackPanel Height="45" Margin="0" Orientation="Horizontal" >
-                                    <Grid Width="140" HorizontalAlignment="Left" Background="Red">
-                                        <TextBlock  TextWrapping="Wrap" Text="Total Mensal" VerticalAlignment="Center" TextAlignment="Center" Margin="0,0,0,0" FontSize="16.667" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                                    </Grid>
-                                    <TextBlock Name="txtTotalMensal" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FF333333" Margin="15,0,0,0" HorizontalAlignment="Center" FontSize="16"/>
-                                </StackPanel>
-                            </Border>-->
 
 
                         </StackPanel>
@@ -502,8 +458,8 @@
                 </Grid>
             </StackPanel>
         </ScrollViewer>
-        <Border BorderBrush="#4C333333" x:Name="StatusBorder" Grid.Row="1" Visibility="Visible" Tapped="StatusBorder_Tapped">
-            <Grid HorizontalAlignment="Stretch" Background="#FFC6C6C6">
+        <Border BorderBrush="#4C333333" x:Name="StatusBorder" Grid.Row="1" Visibility="Visible" Tapped="StatusBorder_Tapped" Background="#FFB0A806">
+            <Grid HorizontalAlignment="Stretch" >
                 <TextBlock x:Name="StatusBlock" Foreground="Black"  FontSize="15" FontWeight="Bold" Margin="12, 10, 12, 10" TextWrapping="Wrap"/>
             </Grid>
             
